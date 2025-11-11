@@ -1,0 +1,35 @@
+# Функція для форматування ціни
+def format_price(price):
+    return f"ціна: {price:.2f} грн"
+
+# Список товарів у магазині
+store = {
+    "хліб": 25.5,
+    "молоко": 30,
+    "цукор": 28.75,
+    "чай": 40,
+    "кава": 120
+}
+
+# Функція для перевірки наявності
+def check_availability(items):
+    return {item: item in store for item in items}
+
+# Функція оформлення замовлення
+def make_order(order, action):
+    availability = check_availability(order)
+    if not all(availability.values()):
+        print("Деяких товарів немає в наявності!")
+        return
+    total = sum(store[item] for item in order)
+    if action == "переглянути":
+        print("Загальна", format_price(total))
+    elif action == "купити":
+        print("Ви купили:", ", ".join(order))
+        print("До сплати", format_price(total))
+    else:
+        print("Невідома дія.")
+
+# --- Приклад ---
+make_order(["хліб", "чай"], "переглянути")
+make_order(["хліб", "чай"], "купити")
