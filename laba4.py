@@ -1,4 +1,4 @@
-# Функція для форматування ціни
+# форматування ціни
 def format_price(price):
     return f"ціна: {price:.2f} грн"
 
@@ -11,11 +11,11 @@ store = {
     "кава": 120
 }
 
-# Функція для перевірки наявності
+# перевірка наявності
 def check_availability(items):
     return {item: item in store for item in items}
 
-# Функція оформлення замовлення
+# оформлення замовлення
 def make_order(order, action):
     availability = check_availability(order)
     if not all(availability.values()):
@@ -30,6 +30,7 @@ def make_order(order, action):
     else:
         print("Невідома дія.")
 
-# --- Приклад ---
+#  Приклад 
 make_order(["хліб", "чай"], "переглянути")
 make_order(["хліб", "чай"], "купити")
+
